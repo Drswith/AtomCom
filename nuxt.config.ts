@@ -2,7 +2,6 @@
 import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
-  ssr: false,
 
   modules: [
     '@vueuse/nuxt',
@@ -12,12 +11,10 @@ export default defineNuxtConfig({
     // '@vite-pwa/nuxt',
     '@nuxt/eslint',
   ],
+  ssr: false,
 
   devtools: {
     enabled: true,
-  },
-  devServer: {
-    port: 6580,
   },
 
   app: {
@@ -40,6 +37,9 @@ export default defineNuxtConfig({
 
   colorMode: {
     classSuffix: '',
+  },
+  devServer: {
+    port: 6580,
   },
 
   future: {
