@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import CarbonMoon from '~icons/carbon/moon'
+import CarbonSun from '~icons/carbon/sun'
+
 const color = useColorMode()
 
 useHead({
@@ -15,7 +18,14 @@ function toggleDark() {
 </script>
 
 <template>
-  <button class="!outline-none" @click="toggleDark">
-    <div class="i-carbon-sun dark:i-carbon-moon" />
-  </button>
+  <Button class="!outline-none" @click="toggleDark">
+    <template #default>
+      <template v-if="color.value === 'dark'">
+        <CarbonMoon />
+      </template>
+      <template v-else>
+        <CarbonSun />
+      </template>
+    </template>
+  </Button>
 </template>

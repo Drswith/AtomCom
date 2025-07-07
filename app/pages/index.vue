@@ -12,18 +12,18 @@ const online = useOnline()
     <ClientOnly>
       <Suspense>
         <PageView v-if="online" />
-        <div v-else text-gray:80>
+        <div v-else class="text-gray-80">
           You're offline
         </div>
         <template #fallback>
-          <div op50 italic>
-            <span animate-pulse>Loading...</span>
+          <div class="opacity-50 italic">
+            <span class="animate-pulse">Loading...</span>
           </div>
         </template>
       </Suspense>
       <template #fallback>
-        <div op50>
-          <span animate-pulse>...</span>
+        <div class="opacity-50">
+          <span class="animate-pulse">Loading...</span>
         </div>
       </template>
     </ClientOnly>

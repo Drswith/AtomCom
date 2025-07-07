@@ -1,22 +1,37 @@
+import tailwindcss from '@tailwindcss/vite'
 // import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
 
   modules: [
+    'shadcn-nuxt',
     '@vueuse/nuxt',
-    '@unocss/nuxt',
+    // '@unocss/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     // '@vite-pwa/nuxt',
     '@nuxt/eslint',
+    ['unplugin-icons/nuxt', { /* options */ }],
   ],
   ssr: false,
+  components: {
+    dirs: [
+      {
+        path: '~/components/global',
+        global: true,
+      },
+      {
+        path: '~/components/ui',
+        ignore: ['**/*.ts'], // 忽略 TypeScript 文件的自动导入
+      },
+      '~/components',
+    ],
+  },
 
   devtools: {
     enabled: true,
   },
-
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
@@ -34,6 +49,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  css: ['~/assets/css/main.css'],
 
   colorMode: {
     classSuffix: '',
@@ -68,6 +84,11 @@ export default defineNuxtConfig({
       ignore: ['/hi'],
     },
   },
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
 
   eslint: {
     config: {
@@ -76,6 +97,17 @@ export default defineNuxtConfig({
         sortConfigKeys: true,
       },
     },
+  },
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: '',
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: './components/ui',
   },
 
   // pwa,
